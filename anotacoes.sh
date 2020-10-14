@@ -43,3 +43,46 @@ docker run ubuntu whoami
 #o que realmente eu faço com o comando docker run
 #Criar um container a partir da imagem base Debian
 docker run debian
+
+#parar um container em execução
+docker stop nome_container
+
+#iniciar um container já existente
+docker start nome_container
+
+#hibernação de um container
+docker pause nome_container
+
+#reverso do pause
+docker unpause nome_container
+
+#remover o container 
+####o ideal é dar um stop antes de remover o container
+docker rm nome_container
+docker rm -f nome_container
+
+#remover todos os container que estão parados
+####WARNING! This will remove all stopped containers.Are you sure you want to continue? [y/N]
+docker container prune 
+
+
+#remover imagens
+docker rmi nome_imagem
+
+#remover todas as imagens que estão inativas
+docker images prune
+
+#inspecionar um container 
+####retorna um json com informações do container
+docker inspect nome_container
+
+#acessar informações do json
+####pode se usar artifícios do shell script como grep
+docker inspect --format='{{.Config.Image}}' test
+docker inspect test | grep Image
+
+
+#monitorar com log
+docker log nome_container
+
+
