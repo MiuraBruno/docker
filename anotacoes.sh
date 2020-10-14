@@ -28,3 +28,18 @@ docker run --rm -it ubuntu
 
 #-it abre o terminal da imagem
 
+
+#mais opções
+docker run --name ubuntu -itd ubuntu:18.04
+#da nome ubuntu a imagem 
+#itd= roda iterativo em backgroud
+
+
+#iniciar a imagem e rodar um comando no terminal desse container
+docker run ubuntu whoami
+
+
+
+#o que realmente eu faço com o comando docker run
+#Criar um container a partir da imagem base Debian
+docker run debian
