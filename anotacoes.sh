@@ -85,4 +85,48 @@ docker inspect test | grep Image
 #monitorar com log
 docker log nome_container
 
+#consumo dos containers em execução
+####cpu, memory etc
+docker stats
+
+#informações gerais do docker
+docker info
+
+#verificar versão do docker
+docker version  
+
+
+#interação, abrir o terminal de um container ativo
+docker attach nome_container
+
+#executa comandos de um cotainer ativo
+docker exec nome_container
+
+#exportar o file system, exportar um container no seu estado atual
+docker export vm_python
+
+#compressão
+docker export vm_python | gzip > export_container.tar.gz
+
+#importar o container se torna uma imagem
+#comando de descompactar aquivo e usar no comando seguinte
+zcat export_container.tar.gz | docker import - export_novo
+
+#utilizando o container "backup" sempre referenciar o bash no final
+docker run -it --name container_importado export_novo bash
+
+#importando uma imagem para tar
+docker save export_novo | gzip -c > Imagem.tar.gz
+
+#econtrando uma imagem no docker
+docker search nome_imagem
+
+#importando uma imagem do docker e criando um container tudo 
+#a partir de uma imagem compactada
+zcat CONTAINER.tar.gz | docker import - container_import
+docker run -it --name container_importado container_import bash
+
+#network
+docker network inspect bridge
+
 

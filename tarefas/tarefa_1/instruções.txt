@@ -1,0 +1,32 @@
+Num cenário hipotético, um colega de trabalho precisou interromper suas atividades sobre determinada aplicação que rodava em container Docker.
+
+Mesmo sabendo que um container é um elemento volátil, foi preciso salvar um arquivo importante dentro do container em execução. Mas, você, que já entende um pouco desse cenário, solicitou a ele que exportasse o container para formato de arquivo .tar.gz e o enviasse para que você o recuperasse e copiasse o arquivo salvo no container para seu computador, para, assim, seguir todos os procedimentos necessários para dar continuidade ao trabalho.
+
+Diante disso, o objetivo dessa tarefa é recuperar o arquivo contido no container, em questão, e seguir as orientações do mesmo.
+
+INFORMAÇÕES IMPORTANTES
+
+Comando usado para exportar container: sudo docker export container | gzip > CONTAINER.tar.gz
+
+Link para download do container exportado em formato .tar.gz: http://bit.ly/CONTAINER_EXPORTADO (somente no browser)
+
+Local do arquivo, dentro do container: /tmp/orientacoes.txt
+
+Comando para importar container: zcat CONTAINER.tar.gz | sudo docker import - novo_nome_container
+
+Perguntas dessa tarefa
+AÇÃO: Importe o container baixado e execute-o em background.
+
+PERGUNTA: Quais procedimentos foram feitos para importar e executar, em background, o container baixado?
+
+AÇÃO: Copie o arquivo do container (/tmp/orientacoes.txt) para seu computador.
+
+PERGUNTA: Qual procedimento foi feito para copiar o arquivo do container para seu computador? E qual é seu conteúdo?
+
+AÇÃO: Siga as orientações do arquivo, contido no container, e execute-as em sequência.
+
+PERGUNTA: Dada orientações contidas no arquivo, mostre quais foram os comandos usados para executá-las?
+
+AÇÃO: Sabendo que é possível executar um comando num container já executado, execute o comando cat para ler o arquivo do container sem precisar copiá-lo para seu computador e solicitar interação com o container.
+
+PERGUNTA: Qual comando e sintaxe completa para ler o conteúdo do arquivo contido no container sem precisar copiá-lo para seu computador e solicitar interação com o container?
