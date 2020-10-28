@@ -1,0 +1,47 @@
+Num cenário hipotético, as exigências do seu cargo estão aumentando. Agora, a sua equipe decidiu iniciar um processo de adoção de alguns serviços de rede em containers. Dentre diversas outras opções, você foi incumbido a homologar o uso de base de dados Postgresql em container.
+
+Diante disso, o objetivo dessa tarefa é que você inicie um container de servidor Postgresql em modo de conexão bridge padrão. Depois, através de um único cliente psql, você use outro container para acessar o container servidor e criar um banco de dados de teste. Por fim, através do cliente desktop pgAdmin validar esse teste.
+
+INFORMAÇÕES IMPORTANTES
+
+Imagem para uso de container servidor Postgresql: postgres (consulte mais em https://hub.docker.com/_/postgres/)
+
+Imagem para uso de container cliente Postgresql: governmentpaas/psql (consulte mais em https://hub.docker.com/r/governmentpaas/psql)
+
+Sintaxe de comando de acesso, via psql cliente, a base de dados criada: psql -h <IP_CONTAINER_SERVER> -U postgres --password
+
+Sintaxe de comando SQL para criação de banco de dados: CREATE DATABASE teste;
+
+Porta de conexão do container servidor Postgresql: 5432
+
+Download de cliente pgAdmin: https://www.pgadmin.org/
+
+VARIÁVEIS DE AMBIENTES EM TEMPO DE EXECUÇÃO NO DOCKER
+
+No processo de criação das imagens (build), muitos desenvolvedores decidem usar os benefícios de variáveis de ambientes, amplamentes utilizadas em diversas linguagens e plataformas de programação. Essa técnica se deve ao fato de manter seguro e eficiente o uso de informações sensíveis da sua aplicação que não podem (e devem) estar salvar em imagem (elemento estático e genérico). Por exemplo, senhas, usuários e/ou informações sensíveis importantes.
+
+Assim, é de respondibilidade de quem cria o container, a partir da imagem, informar em tempo de execução as variáveis de ambientes previstas na imagem - para informações à cerca de quais existem (e se existem) em cada imagem é recomendado consultar sempre a documentação oficial, de desenvolvimento dela no Docker Hub ou GitHub disponibilizado, antes de criar seu container.
+
+No Docker, essas variáveis são usadas através da option, no docker run, --env ou -e.
+
+Exemplo de uso (teste esse comando no seu ambiente de estudos):
+
+$ docker run --rm --env VAR1=value1 -e VAR2=value2 ubuntu env | grep VAR
+VAR1=value1
+VAR2=value2
+Mais informações sobre variáveis de ambientes no Docker:
+
+https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file
+
+Perguntas dessa tarefa
+AÇÃO - criar e iniciar, em background, container servidor PSQL na network default padrão, mapeando a porta do host com o container na 3333, usando imagem "postgres" sugerida.
+
+PERGUNTA - Qual sintaxe de comando completo para criação de container de servidor Postgresql com essas características?
+
+AÇÃO - criar banco de dados "teste" no container servidor PSQL usando um container psql cliente de imagem "governmentpaas/psql" sugerida.
+
+PERGUNTA - Quais os passos você usou para ter acesso ao container servidor, via outro container cliente, e, logo em seguida, criar base de dados "teste" nele?
+
+AÇÃO - baixar e usar cliente gráfico pgAdmin no seu host, acessar servidor container PSQL e visualizar banco de dados "teste" criado, anteriormente.
+
+PERGUNTA - Quais parâmetros de rede (host, port, username, password) você usou para ter acesso e visualização dos banco criados nesse container servidor PSQL? Envie prints da tela com as configurações de conexão feitas e listagem de bancos desse container servidor PSQL.
