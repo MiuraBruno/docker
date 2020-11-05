@@ -129,4 +129,16 @@ docker run -it --name container_importado container_import bash
 #network
 docker network inspect bridge
 
+#persistência de dados
+#ver tamanho de um container 
+##em MB
+docker ps -s
+
+#mapear diretórios
+##bind mount
+###mapeamento entre host hospedeiro e o container 
+###não escalável
+
+
+docker run -itd --name apache -p 9090:80 -v /home/miura/site:/usr/local/apache2/htdocs httpd:2.4
 
